@@ -1,0 +1,45 @@
+#buttonCadastrarLivro{
+    background-color: #4B5C6B;
+    color: white;
+}
+body{
+    background-color: #C3CFD9;
+}
+.formularioCadastro{
+    padding-top: 20px;
+    padding-left: 70px;
+}
+#tituloLivro{
+    width: 1090px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    margin-bottom: 15px
+}
+#descricaoLivro{
+    width: 1090px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    margin-bottom: 15px
+}
+#tituloLivro, #descricaoLivro{
+    border-radius: 5px;
+    border-color: #C3CFD9;
+}
+#tituloLivro:placeholder-shown, #descricaoLivro:placeholder-shown{
+    font-size: 15px;
+    color: #DFE6ED;
+}
+#buttonCadastrarLivro{
+    width: 1105px;
+    background-color: #4B5C6B;
+    color: white;
+    font-size: 20px;
+    border-radius: 5px;
+    border: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

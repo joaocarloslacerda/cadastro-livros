@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleGeral.css">
+    <link rel="stylesheet" href="styleIndex.css">
     <script type="text/javascript" src="script.js"></script>
 
     <title>Cadastrar Livros</title>
@@ -19,19 +20,23 @@
                 <li>
                     <button id="buttonTelaListagem" type="submit">Listagem</button>
                 </li>
-                <li>
-                    <p>CSS e JS</p>
-                </li>
             </ul>
+            <p id="titulo">CSS e JS</p>
         </nav>
     </header>
     
     <main>
         <section class="corpo">
             <div class="formularioCadastro">
-                <input id="tituloLivro" type="text" placeholder="Título">
-                <input id="descricaoLivro" type="text" placeholder="Descrição">
-                <button id="buttonCadastrarLivro" onclick="cadastrarLivro()">Cadastrar</button>
+                <div>
+                    <input id="tituloLivro" type="text" placeholder="Título">
+                </div>
+                <div>
+                    <input id="descricaoLivro" type="text" placeholder="Descrição">
+                </div>
+                <div>
+                    <button id="buttonCadastrarLivro" onclick="cadastrarLivro()">Cadastrar</button>
+                </div>
             </div>
         </section>
     </main>
