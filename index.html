@@ -11,10 +11,29 @@
 <body>
 
     <header>
-
+        <nav class="menu">
+            <ul>
+                <li>
+                    <button id="buttonTelaCadastro" type="submit">Cadastro</button>
+                </li>
+                <li>
+                    <button id="buttonTelaListagem" type="submit">Listagem</button>
+                </li>
+                <li>
+                    <p>CSS e JS</p>
+                </li>
+            </ul>
+        </nav>
     </header>
     
     <main>
+        <section class="corpo">
+            <div class="formularioCadastro">
+                <input id="tituloLivro" type="text" placeholder="Título">
+                <input id="descricaoLivro" type="text" placeholder="Descrição">
+                <button id="buttonCadastrarLivro" onclick="cadastrarLivro()">Cadastrar</button>
+            </div>
+        </section>
     </main>
 
     

@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.menu{
+    background-color: #DFE6ED;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+body{
+    background-color: #C3CFD9;
+}
+#buttonTelaCadastro{
+    background-color: #4B5C6B;
+    color: white;
+}
+#buttonTelaListagem{
+    background-color: #4B5C6B;
+    color: white;
+}
+#buttonCadastrarLivro{
+    background-color: #4B5C6B;
+    color: white;
+}
