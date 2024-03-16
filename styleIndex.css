@@ -25,11 +25,11 @@ body{
 }
 #tituloLivro, #descricaoLivro{
     border-radius: 5px;
-    border-color: #C3CFD9;
+    border-color: #eaeaea;
 }
-#tituloLivro:placeholder-shown, #descricaoLivro:placeholder-shown{
+#tituloLivro::placeholder, #descricaoLivro::placeholder{
     font-size: 15px;
-    color: #DFE6ED;
+    color: #C3CFD9;
 }
 #buttonCadastrarLivro{
     width: 1105px;
