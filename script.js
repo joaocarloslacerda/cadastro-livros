@@ -25,11 +25,19 @@ async function requestPost(url, body){
 
     const retornoJson = await retornoFetch.json()
 
-    if(retornoJson = true){
+    if(retornoFetch.ok == true){
+        const divResultado = document.getElementById("resultado")
+
+        divResultado.style.color = "green"
+    }
+    else{
         const divResultado = document.getElementById("resultado")
 
         divResultado.style.color = "red"
     }
+
+
+    console.log(retornoFetch)
 
     console.log(retornoJson)
 }
