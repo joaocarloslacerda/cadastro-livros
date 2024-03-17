@@ -25,15 +25,15 @@ async function requestPost(url, body){
 
     const retornoJson = await retornoFetch.json()
 
+    const divResultado = document.getElementById("resultado")
+    divResultado.style.display = "block"
     if(retornoFetch.ok == true){
-        const divResultado = document.getElementById("resultado")
-
-        divResultado.style.color = "green"
+        divResultado.innerText = "Enviado com sucesso!"
+        divResultado.style.backgroundColor = "#207868"
     }
     else{
-        const divResultado = document.getElementById("resultado")
-
-        divResultado.style.color = "red"
+        divResultado.innerText = "Formulário inválido"
+        divResultado.style.backgroundColor = "#AC6363"
     }
 
 
