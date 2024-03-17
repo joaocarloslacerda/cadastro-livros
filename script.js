@@ -3,9 +3,17 @@ async function cadastrarLivro(){
     const tituloLivro = document.getElementById("tituloLivro").value
     const descricaoLivro = document.getElementById("descricaoLivro").value
 
-    montaJson(tituloLivro, descricaoLivro)    
+    montaJsonPost(tituloLivro, descricaoLivro)    
 }
-async function montaJson(tituloLivro, descricaoLivro){
+async function mostrarLivro(){
+
+
+    requestGet()
+
+
+}
+
+async function montaJsonPost(tituloLivro, descricaoLivro){
 
     const url = "https://api-aula.up.railway.app/livros"
 
@@ -40,4 +48,13 @@ async function requestPost(url, body){
     console.log(retornoFetch)
 
     console.log(retornoJson)
+}
+async function requestGet(){
+
+    const url = "https://api-aula.up.railway.app/livros"
+
+    const requestGet = await fetch(url)
+    const livro = await requestGet.json()
+
+    console.log(livro)
 }
