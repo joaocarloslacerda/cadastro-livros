@@ -7,9 +7,18 @@ async function cadastrarLivro(){
 }
 async function mostrarLivro(){
 
+    const campoTitle = document.getElementById("title")
+    const campoDescription = document.getElementById("description")
 
-    requestGet()
+    const response = await requestGet()
+    
+    response.forEach(element => {
+        campoTitle.innerText = element.title
+        campoDescription.innerText = element.description
 
+        console.log(element.title)
+        console.log(element.description)
+    })
 
 }
 
@@ -56,5 +65,5 @@ async function requestGet(){
     const requestGet = await fetch(url)
     const livro = await requestGet.json()
 
-    console.log(livro)
+    return livro
 }
