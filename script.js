@@ -1,9 +1,16 @@
 async function cadastrarLivro(){
     
-    const tituloLivro = document.getElementById("tituloLivro").value
-    const descricaoLivro = document.getElementById("descricaoLivro").value
+    const tituloLivro = document.getElementById("tituloLivro")
+    const descricaoLivro = document.getElementById("descricaoLivro")
 
-    montaJsonPost(tituloLivro, descricaoLivro)    
+    if(!tituloLivro.value){
+        tituloLivro.placeholder = "Título é obrigatório"
+        tituloLivro.style.backgroundColor = "#AC6363"
+        return false
+    }
+    else{
+        montaJsonPost(tituloLivro, descricaoLivro)    
+    }
 }
 async function mostrarLivro(){
 
@@ -24,15 +31,15 @@ async function mostrarLivro(){
 
 async function montaJsonPost(tituloLivro, descricaoLivro){
 
-    const url = "https://api-aula.up.railway.app/livros"
-
     const body = {
-         title: tituloLivro,
-         description: descricaoLivro
+         title: tituloLivro.value,
+         description: descricaoLivro.value
     }
-    await requestPost(url, body)
+    await requestPost(body)
 }
-async function requestPost(url, body){
+async function requestPost(body){
+
+    const url = "https://api-aula.up.railway.app/livros"
 
     const retornoFetch = await fetch(url, {
         method: "POST",
@@ -49,7 +56,7 @@ async function requestPost(url, body){
         divResultado.style.backgroundColor = "#207868"
     }
     else{
-        divResultado.innerText = "Formulário inválido"
+        divResultado.innerText = "Formulário não enviado"
         divResultado.style.backgroundColor = "#AC6363"
     }
 
