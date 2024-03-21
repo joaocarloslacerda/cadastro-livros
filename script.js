@@ -18,15 +18,30 @@ async function mostrarLivro(){
     const campoDescription = document.getElementById("description")
 
     const response = await requestGet()
+
+    console.log(document.getElementById("title"))
+    console.log(document.getElementById("description"))
     
     response.forEach(element => {
-        campoTitle.innerText = element.title
-        campoDescription.innerText = element.description
+        //campoTitle.innerText = element.title
+        //campoDescription.innerText = element.description
+        listTitle = document.createElement('li')
+        listDescription = document.createElement('li')
+
+        listTitle.textContent = element.title
+        listDescription.textContent = element.description
 
         console.log(element.title)
         console.log(element.description)
-    })
 
+
+        campoTitle.appendChild(listTitle)
+        campoDescription.appendChild(listDescription)
+
+
+
+
+    })
 }
 
 async function montaJsonPost(tituloLivro, descricaoLivro){
