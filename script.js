@@ -3,14 +3,85 @@ async function cadastrarLivro(){
     const tituloLivro = document.getElementById("tituloLivro")
     const descricaoLivro = document.getElementById("descricaoLivro")
 
-    if(!tituloLivro.value){
-        tituloLivro.placeholder = "Título é obrigatório"
-        tituloLivro.style.backgroundColor = "#AC6363"
+    limpaAvisosCadastro()
+
+    const retornaValidacao = validaTituloDescricao(tituloLivro, descricaoLivro)
+    
+    if(retornaValidacao){
+        montaJsonPost(tituloLivro, descricaoLivro)
+    }
+
+}
+async function validaTituloDescricao(tituloLivro, descricaoLivro){
+
+    const divResultado = document.getElementById("resultado")
+
+    if(!tituloLivro.value || !descricaoLivro.value){
+        console.log(tituloLivro.value)
+        console.log(descricaoLivro.value)
+        if(!tituloLivro.value){
+            tituloLivro.placeholder = "Título é obrigatório"
+            tituloLivro.style.backgroundColor = "#AC6363"
+            console.log("entrou titulo")
+        }
+        if(!descricaoLivro.value){
+            descricaoLivro.placeholder = "Descrição é obrigatório"
+            descricaoLivro.style.backgroundColor = "#AC6363"
+            console.log("entrou descricao")
+        }
+        divResultado.style.display = "block"
+        divResultado.innerText = "Formulário inválido"
+        divResultado.style.backgroundColor = "#AC6363"
         return false
     }
     else{
-        montaJsonPost(tituloLivro, descricaoLivro)    
+        return true
     }
+}
+async function montaJsonPost(tituloLivro, descricaoLivro){
+
+    const body = {
+         title: tituloLivro.value,
+         description: descricaoLivro.value
+    }
+    await requestPost(body)
+}
+async function requestPost(body){
+
+    const url = "https://api-aula.up.railway.app/livros"
+
+    const retornoFetch = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(body),
+        headers: {"Content-type": "application/json"}
+    })
+
+    const retornoJson = await retornoFetch.json()
+
+    console.log(retornoJson)
+
+    const divResultado = document.getElementById("resultado")
+    divResultado.style.display = "block"
+    if(retornoFetch.ok == true){
+        divResultado.innerText = "Enviado com sucesso!"
+        divResultado.style.backgroundColor = "#207868"
+
+        const divLivroCadastrado = document.getElementById("livroCadastrado")
+        
+        const divTituloLivro = document.getElementById("tituloLivro")
+        divLivroCadastrado.innerText = `Você cadastrou o livro ${divTituloLivro.value}`
+        divLivroCadastrado.style.display = "block"
+    }
+}
+async function limpaAvisosCadastro(){
+    const divTituloLivro = document.getElementById("tituloLivro")
+    divTituloLivro.style.backgroundColor = "white"
+
+    const divDescricaoLivro = document.getElementById("descricaoLivro")
+    divDescricaoLivro.style.backgroundColor = "white"
+
+    const divLivroCadastrado = document.getElementById("livroCadastrado")
+    divLivroCadastrado.style.display = "none"
 }
 async function mostrarLivro(){
 
@@ -42,43 +113,6 @@ async function mostrarLivro(){
 
 
     })
-}
-
-async function montaJsonPost(tituloLivro, descricaoLivro){
-
-    const body = {
-         title: tituloLivro.value,
-         description: descricaoLivro.value
-    }
-    await requestPost(body)
-}
-async function requestPost(body){
-
-    const url = "https://api-aula.up.railway.app/livros"
-
-    const retornoFetch = await fetch(url, {
-        method: "POST",
-        body: JSON.stringify(body),
-        headers: {"Content-type": "application/json"}
-    })
-
-    const retornoJson = await retornoFetch.json()
-
-    const divResultado = document.getElementById("resultado")
-    divResultado.style.display = "block"
-    if(retornoFetch.ok == true){
-        divResultado.innerText = "Enviado com sucesso!"
-        divResultado.style.backgroundColor = "#207868"
-    }
-    else{
-        divResultado.innerText = "Formulário não enviado"
-        divResultado.style.backgroundColor = "#AC6363"
-    }
-
-
-    console.log(retornoFetch)
-
-    console.log(retornoJson)
 }
 async function requestGet(){
 
