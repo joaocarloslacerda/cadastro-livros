@@ -10,9 +10,6 @@ async function cadastrarLivro(){
     if(retornaValidacao){
         montaJsonPost(tituloLivro, descricaoLivro)
     }
-    else if(!retornaValidacao){
-        return false
-    }
 
 }
 async function validaTituloDescricao(tituloLivro, descricaoLivro){
@@ -86,34 +83,46 @@ async function limpaAvisosCadastro(){
 }
 async function mostrarLivro(){
 
-    const campoTitle = document.getElementById("title")
-    const campoDescription = document.getElementById("description")
+    const cardsContainer = document.getElementById("cardsContainer")
 
     const response = await requestGet()
 
-    console.log(document.getElementById("title"))
-    console.log(document.getElementById("description"))
-    
-    response.forEach(element => {
-        //campoTitle.innerText = element.title
-        //campoDescription.innerText = element.description
-        listTitle = document.createElement('li')
-        listDescription = document.createElement('li')
+    console.log(response.length)
+    //response.forEach(element => {
 
+    //for(let i=0; i < response.length; i++){
+    for(const element of response){
+        //element = response[i]
+        console.log(element)
+
+        let card = document.createElement("div")
+        card.classList.add("card")
+
+        let listTitle = document.createElement("h1")
         listTitle.textContent = element.title
+
+        let listDescription = document.createElement("p")
         listDescription.textContent = element.description
 
-        console.log(element.title)
-        console.log(element.description)
+        card.appendChild(listTitle)
+        card.appendChild(listDescription)
 
 
-        campoTitle.appendChild(listTitle)
-        campoDescription.appendChild(listDescription)
+        cardsContainer.appendChild(card)
 
+        //console.log(cardsContainer)
 
+    
+    
+        /*card.appendChild(listTitle)
+        card.appendChild(listDescription)
 
+        console.log(cardsContainer)
 
-    })
+        cardsContainer.appendChild(card)*/
+    }
+    //})
+
 }
 async function requestGet(){
 
@@ -121,6 +130,8 @@ async function requestGet(){
 
     const requestGet = await fetch(url)
     const livro = await requestGet.json()
+
+    console.log(livro)
 
     return livro
 }
