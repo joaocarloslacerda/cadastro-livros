@@ -5,10 +5,13 @@ async function cadastrarLivro(){
 
     limpaAvisosCadastro()
 
-    const retornaValidacao = validaTituloDescricao(tituloLivro, descricaoLivro)
+    const retornaValidacao = await validaTituloDescricao(tituloLivro, descricaoLivro)
     
     if(retornaValidacao){
         montaJsonPost(tituloLivro, descricaoLivro)
+    }
+    else if(!retornaValidacao){
+        return false
     }
 
 }
@@ -22,19 +25,17 @@ async function validaTituloDescricao(tituloLivro, descricaoLivro){
         if(!tituloLivro.value){
             tituloLivro.placeholder = "Título é obrigatório"
             tituloLivro.style.backgroundColor = "#AC6363"
-            console.log("entrou titulo")
         }
         if(!descricaoLivro.value){
             descricaoLivro.placeholder = "Descrição é obrigatório"
             descricaoLivro.style.backgroundColor = "#AC6363"
-            console.log("entrou descricao")
         }
         divResultado.style.display = "block"
         divResultado.innerText = "Formulário inválido"
         divResultado.style.backgroundColor = "#AC6363"
         return false
     }
-    else{
+    else if(tituloLivro.value || descricaoLivro.value){
         return true
     }
 }

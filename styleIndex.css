@@ -39,6 +39,10 @@ body{
     padding-top: 10px;
     padding-bottom: 10px;
 }
+#buttonCadastrarLivro:hover{
+    background-color: rgb(189, 182, 182);
+    color: #4B5C6B;
+}
 #livroCadastrado{
     display: none;
     background-color: #909294;
