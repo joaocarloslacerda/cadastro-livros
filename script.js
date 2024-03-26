@@ -54,9 +54,9 @@ async function requestPost(body){
         headers: {"Content-type": "application/json"}
     })
 
-    const retornoJson = await retornoFetch.json()
-
-    console.log(retornoJson)
+    validaRequestPost(retornoFetch)
+}
+async function validaRequestPost(retornoFetch){
 
     const divResultado = document.getElementById("resultado")
     divResultado.style.display = "block"
@@ -87,13 +87,7 @@ async function mostrarLivro(){
 
     const response = await requestGet()
 
-    console.log(response.length)
-    //response.forEach(element => {
-
-    //for(let i=0; i < response.length; i++){
     for(const element of response){
-        //element = response[i]
-        console.log(element)
 
         let card = document.createElement("div")
         card.classList.add("card")
@@ -104,36 +98,13 @@ async function mostrarLivro(){
         let listDescription = document.createElement("p")
         listDescription.textContent = element.description
 
-        card.style.display = "inline-block"
-        card.style.marginTop = "10px"
-        card.style.marginRight = "10px"
-        card.style.padding = "10px"
-        card.style.backgroundColor = "#f3f5f7"
-        card.style.border = "2px solid #4B5C6B"
-        card.style.borderRadius = "8px"
-        card.style.minWidth = "300px"
-        listTitle.style.paddingBottom = "5px"
-        listTitle.style.textTransform = "uppercase"
+        estilizaCards(card, listTitle)
 
         card.appendChild(listTitle)
         card.appendChild(listDescription)
 
-
         cardsContainer.appendChild(card)
-
-        //console.log(cardsContainer)
-
-    
-    
-        /*card.appendChild(listTitle)
-        card.appendChild(listDescription)
-
-        console.log(cardsContainer)
-
-        cardsContainer.appendChild(card)*/
     }
-    //})
-
 }
 async function requestGet(){
 
@@ -142,7 +113,18 @@ async function requestGet(){
     const requestGet = await fetch(url)
     const livro = await requestGet.json()
 
-    console.log(livro)
-
     return livro
+}
+async function estilizaCards(card, listTitle){
+
+    card.style.display = "inline-block"
+    card.style.marginTop = "10px"
+    card.style.marginRight = "10px"
+    card.style.padding = "10px"
+    card.style.backgroundColor = "#f3f5f7"
+    card.style.border = "2px solid #4B5C6B"
+    card.style.borderRadius = "8px"
+    card.style.minWidth = "300px"
+    listTitle.style.paddingBottom = "5px"
+    listTitle.style.textTransform = "uppercase"
 }
