@@ -97,12 +97,23 @@ async function mostrarLivro(){
 
         let card = document.createElement("div")
         card.classList.add("card")
-
+        
         let listTitle = document.createElement("h1")
         listTitle.textContent = element.title
 
         let listDescription = document.createElement("p")
         listDescription.textContent = element.description
+
+        card.style.display = "inline-block"
+        card.style.marginTop = "10px"
+        card.style.marginRight = "10px"
+        card.style.padding = "10px"
+        card.style.backgroundColor = "#f3f5f7"
+        card.style.border = "2px solid #4B5C6B"
+        card.style.borderRadius = "8px"
+        card.style.minWidth = "300px"
+        listTitle.style.paddingBottom = "5px"
+        listTitle.style.textTransform = "uppercase"
 
         card.appendChild(listTitle)
         card.appendChild(listDescription)
